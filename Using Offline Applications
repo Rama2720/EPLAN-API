@@ -1,0 +1,30 @@
+namespace TestModule_EPLAN1
+{
+    public partial class Master : Form
+    {
+        private Eplan.EplApi.System.EplApplication m_oEplApp;
+
+        public Master()
+        {
+            InitializeComponent();
+            
+            
+            
+        }
+        
+        
+       
+
+        private void btnCreateProj_Click(object sender, EventArgs e)
+        {
+
+            oEplApp EplApplication = new oEplApp();
+            System.String strAppModifier = "";
+            oEplApp.Init(strAppModifier);
+            LockingStep oLocking = new LockingStep();
+
+            Project oProject = new ProjectManager().CreateProject(@"C:\Users\Public\EPLAN\Data\Projects\MB\Example.003.elk", @"C:\Users\Public\EPLAN\Data\Templates\MB\MB_Basic_Project_263_10731_V02_08.zw9");
+            oProject.Close();
+            oLocking.Dispose();
+            oEplApp.Exit();
+        }
